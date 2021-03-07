@@ -1,0 +1,24 @@
+#include <stdio.h>
+int main(){
+	int t;
+	scanf("%d",&t);
+	int word[100];
+	for(int i=0;i<t;i++){
+		scanf("%d",&word[i]);
+	}
+	for(int i=0;i<t;i++){
+		if(word[i]==1){
+			t--;
+			continue;
+		}
+		for(int j=2;j<word[i]/2;j++){
+			if(word[i]%j==0){
+				printf("word[i]: %d, j: %d\n",word[i],j);
+				t--;
+				break;
+			}
+		}
+	}
+	printf("%d",t);
+	return 0;
+}
