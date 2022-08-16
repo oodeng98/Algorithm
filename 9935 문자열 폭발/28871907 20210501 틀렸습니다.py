@@ -6,7 +6,7 @@ target.reverse()
 stack = []
 bomb = input().rstrip()
 index = 0
-while len(bomb) <= len(target):
+while len(bomb) <= len(target):  # bomb의 길이가 1인 경우는?!
     temp1 = target[-1]
     if temp1 == bomb[0]:
         check = 1
