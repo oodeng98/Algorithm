@@ -23,12 +23,12 @@ data_sorted = sorted(data)
 print(data_sorted[num//2])
 
 # 최빈값, 두번째로 작은 값 출력해야함
-# count = {}
+# up = {}
 # for i in data:
-#     if i in count.keys():
-#         count[i] += 1
+#     if i in up.keys():
+#         up[i] += 1
 #     else:
-#         count[i] = 1
+#         up[i] = 1
 
 count = [(x, y) for x, y in count.items()]
 count = sorted(count, key=lambda x: x[1], reverse=True)

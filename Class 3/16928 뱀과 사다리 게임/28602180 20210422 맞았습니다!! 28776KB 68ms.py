@@ -28,7 +28,7 @@ while True:
     start = from_start - common
     # print(common, start, end)
 
-    # count += 1
+    # up += 1
     # from_end = set()
     # for i in end:
     #     for j in range(1, 7):
