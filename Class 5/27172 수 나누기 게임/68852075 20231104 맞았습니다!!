@@ -1,0 +1,35 @@
+import sys
+import math
+
+
+def find_divisor(a):
+    divisor = set()
+    for i in range(2, int(math.sqrt(a)) + 1):
+        if a % i == 0:
+            divisor.add(i)
+    half = set()
+    for i in divisor:
+        half.add(a // i)
+    divisor.update(half)
+    divisor.add(1)
+    return divisor
+
+
+input = sys.stdin.readline
+n = int(input())
+card = list(map(int, input().split()))
+score = {}
+for i in card:
+    score[i] = 0
+
+for i in card:
+    up = find_divisor(i)
+    count = 0
+    for j in up:
+        if j in score:
+            score[j] += 1
+            count += 1
+    score[i] -= count
+
+for i in card:
+    print(score[i], end=" ")
