@@ -15,6 +15,8 @@ def around(x, y):
 def bfs(x, y):
     if x == N - 1 and y == N - 1:
         return
+    if score[N-1][N-1] < score[x][y]:
+        return
     candidate = around(x, y)
     for a, b in candidate:
         if Map[a][b] + score[x][y] < score[a][b]:
