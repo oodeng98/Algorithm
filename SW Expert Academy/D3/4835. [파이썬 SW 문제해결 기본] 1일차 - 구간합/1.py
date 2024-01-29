@@ -12,6 +12,8 @@ for t in range(1, T+1):
         temp_value = 0
         for m in range(M):
             temp_value += arr[n + m]
-        min_value = min(min_value, temp_value)
-        max_value = max(max_value, temp_value)
+        if min_value > temp_value:
+            min_value = temp_value
+        if max_value < temp_value:
+            max_value = temp_value
     print(f"#{t} {max_value - min_value}")
