@@ -2,14 +2,20 @@ import sys
 
 
 def subset(lst, n):
-    N = len(lst)
-    result = []
-    for i in range(2 ** n - 1, 2 ** N):
-        temp = []
-        for j in range(N):
+    result = 0
+    for i in range(2 ** n - 1, 2 ** 12):
+        total = 0
+        count = 0
+        for j in range(12):
             if i & (1<<j):
-                temp.append(lst[j])
-        result.append(temp)
+                count += 1
+                if count >= n + 1:
+                    break
+                total += lst[j]
+                if total > K:
+                    break
+        if count == n and total == K:
+            result += 1
     return result
 
 
@@ -19,14 +25,5 @@ T = int(input())
 A = [i for i in range(1, 13)]
 for t in range(1, T+1):
     N, K = map(int, input().split())
-    count = 0
-    for case in subset(A, N):
-        if len(case) != N:
-            continue
-        total = 0
-        for i in case:
-            total += i
-        if total == K:
-            count += 1
+    count = subset(A, N)
     print(f"#{t} {count}")
-    break
