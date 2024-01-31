@@ -3,13 +3,13 @@ import sys
 
 def near(a, b):
     ret = arr[a][b]
-    if 0 <= a - 1 < N and 0 <= b < N:
+    if 0 <= a - 1 < N and 0 <= b < M:
         ret += arr[a-1][b]
-    if 0 <= a + 1 < N and 0 <= b < N:
+    if 0 <= a + 1 < N and 0 <= b < M:
         ret += arr[a+1][b]
-    if 0 <= a < N and 0 <= b - 1 < N:
+    if 0 <= a < N and 0 <= b - 1 < M:
         ret += arr[a][b-1]
-    if 0 <= a < N and 0 <= b + 1 < N:
+    if 0 <= a < N and 0 <= b + 1 < M:
         ret += arr[a][b+1]
     return ret
 
