@@ -3,15 +3,17 @@ import sys
 
 def near(a, b):
     ret = arr[a][b]
-    if 0 <= a - 1 < N and 0 <= b < M:
-        ret += arr[a-1][b]
-    if 0 <= a + 1 < N and 0 <= b < M:
-        ret += arr[a+1][b]
-    if 0 <= a < N and 0 <= b - 1 < M:
-        ret += arr[a][b-1]
-    if 0 <= a < N and 0 <= b + 1 < M:
-        ret += arr[a][b+1]
+    for i in range(1, arr[a][b]+1):
+        if 0 <= a - i < N and 0 <= b < M:
+            ret += arr[a-i][b]
+        if 0 <= a + i < N and 0 <= b < M:
+            ret += arr[a+i][b]
+        if 0 <= a < N and 0 <= b - i < M:
+            ret += arr[a][b-i]
+        if 0 <= a < N and 0 <= b + i < M:
+            ret += arr[a][b+i]
     return ret
+
 
 
 sys.stdin = open('input.txt')
