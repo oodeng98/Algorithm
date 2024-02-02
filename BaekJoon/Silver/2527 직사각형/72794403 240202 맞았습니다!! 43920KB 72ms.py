@@ -16,5 +16,3 @@ for _ in range(4):
         print('b')
     else:
         print('a')
-    print(checkx, checky)
-    # x,y중 하나만 겹치면? 그걸 해결 못하네
