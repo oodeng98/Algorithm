@@ -14,4 +14,3 @@ for t in range(1, int(input()) + 1):
         next_stack.append(0)
         print(' '.join(map(str, next_stack[1:-1])))
         stack = next_stack
-
