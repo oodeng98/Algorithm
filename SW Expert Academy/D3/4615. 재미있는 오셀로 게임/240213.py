@@ -25,7 +25,6 @@ for t in range(1, T+1):
         board[i][i] = 2
         board[i][N-i-1] = 1
     
-    seq = []
     for _ in range(M):
         y, x, color = map(int, input().split())  # y, x, color: 1은 흑돌, 2는 백돌
         delta(x-1, y-1, color)
