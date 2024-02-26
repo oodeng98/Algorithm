@@ -1,5 +1,4 @@
 import sys
-import time
 
 sys.stdin = open('input.txt')
 
@@ -28,7 +27,8 @@ def Bomb(table, n):
         results.append(result)
         return
     for i in range(W):
-        new_table = deepcopy(table)
+        # new_table = deepcopy(table)
+        new_table = [ma.copy() for ma in table]
         stack = []
         # 가장 오른쪽 벽돌 위치 찾기
         for j in range(H-1, -1, -1):
@@ -39,7 +39,8 @@ def Bomb(table, n):
         while stack:
             a, b = stack.pop()
             for x, y in IndexCheck(a, b, new_table[a][b]):
-                stack.append((x, y))
+                if 1 <= new_table[x][y]:
+                    stack.append((x, y))
             new_table[a][b] = 0
         # 벽돌 아래로 떨어지기
         for j in range(W):
