@@ -42,7 +42,7 @@ for t in range(1, T+1):
         else:
             dic[i] = 1
     origin_dic = dic.copy()
-    nums = sorted(list(dic.keys()))
+    nums = list(dic.keys())
     length = len(nums)
     lst = []
     perm(0, 0, 0)
