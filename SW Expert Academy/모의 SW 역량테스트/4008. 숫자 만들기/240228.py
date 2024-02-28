@@ -5,14 +5,19 @@ sys.stdin = open('input.txt')
 
 def perm(n):
     if n == N-1:
-        permutations.append(lst.copy())
+        a = nums[0]
+        for index, o in enumerate(lst):
+            b = nums[index+1]
+            a = calculate(a, b, o)
+        min_max[0] = min(min_max[0], a)
+        min_max[1] = max(min_max[1], a)
     else:
         for i in range(4):
-            if 0 < operators[i]:
-                lst.append(operator[i])
+            if operators[i]:
+                lst[n] = operator[i]
                 operators[i] -= 1
                 perm(n+1)
-                lst.pop()
+                lst[n] = ''
                 operators[i] += 1
             
 
@@ -33,16 +38,7 @@ for t in range(1, T+1):
     N = int(input())
     operators = list(map(int, input().split()))
     nums = list(map(int, input().split()))
-    lst = []
-    permutations = []
+    lst = ['' for _ in range(N-1)]
+    min_max = [float('inf'), -float('inf')]
     perm(0)
-    min_value = float('inf')
-    max_value = -float('inf')
-    for i in permutations:
-        a = nums[0]
-        for index, o in enumerate(i):
-            b = nums[index+1]
-            a = calculate(a, b, o)
-        min_value = min(min_value, a)
-        max_value = max(max_value, a)
-    print(f"#{t} {max_value - min_value}")
+    print(f"#{t} {min_max[1] - min_max[0]}")
