@@ -7,15 +7,18 @@ P = int(input())
 airport = [-1 for _ in range(G+1)]
 planes = [int(input()) for _ in range(P)]
 result = 0
+via = []
 for plane in planes:
     p = plane
     while airport[p] != -1:
+        via.append(p)
         p = airport[p]  # 저장되지 않은 위치로 이동
     if p == 0:
         break
     result += 1
     airport[p] = p - 1  # 왼쪽 지정
-    airport[plane] = p - 1
+    while via:
+        airport[via.pop()] = p - 1
 print(result)
 
 '''
