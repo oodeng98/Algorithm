@@ -15,11 +15,14 @@ def delta(x, y):
 
 def dfs(x, y, k, count):
     check = 0
+    if visited[x][y]:
+        return
+    visited[x][y] = 1
     for a, b in delta(x, y):
         if arr[a][b] < arr[x][y]:
             check = 1
-            dfs(x, y, k, count+1)
-        elif arr[a][b] < arr[x][y] + k:
+            dfs(a, b, k, count+1)
+        elif arr[a][b] - k < arr[x][y]:
             check = 1
             temp = arr[a][b]
             arr[a][b] = arr[x][y] - 1
@@ -28,6 +31,7 @@ def dfs(x, y, k, count):
     if not check:  # 더이상 갈 곳이 없으면?
         global max_length
         max_length = max(max_length, count)
+    visited[x][y] = 0
 
 
 T = int(input())
@@ -42,5 +46,6 @@ for t in range(1, T+1):
     for i in range(N):
         for j in range(N):
             if arr[i][j] == max_value:
+                visited = [[0 for _ in range(N)] for _ in range(N)]
                 dfs(i, j, K, 1)
-    print(f"#{t} {max_value}")
+    print(f"#{t} {max_length}")
